@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:camel="http://camel.apache.org/schema/spring" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:amq="http://activemq.apache.org/schema/core"
+	xsi:schemaLocation="http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/beans">
+	<bean id="tcwtjDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="tcwtjListener"></property>
+		<property name="targetMethod" value="process"></property>
+	</bean>
+	<bean id="tcwtjTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="tcwtjDetail" />
+		</property>
+		<property name="cronExpression">
+			<value>1 0 0 * * ?</value>
+		</property>
+	</bean>
+	
+	
+	<bean id="sendSMS" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="lotSucSendMsgListener"></property>
+		<property name="targetMethod" value="lotSucSendMsg"></property>
+	</bean>
+	<bean id="sendSMSTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="sendSMS" />
+		</property>
+		<property name="cronExpression">
+			<value>0 * * * * ?</value>
+		</property>
+	</bean>
+	
+	
+	<bean id="awardlevel" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="tawardLevelListener"></property>
+		<property name="targetMethod" value="process"></property>
+	</bean>
+	<bean id="awardlevelTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="awardlevel" />
+		</property>
+		<property name="cronExpression">
+			<value>0 * * * * ?</value>
+		</property>
+	</bean>
+	
+	<bean id="sendPrize" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="sendPrizeListener"></property>
+		<property name="targetMethod" value="sendPrize"></property>
+	</bean>
+	<bean id="sendPrizeTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="sendPrize" />
+		</property>
+		<property name="cronExpression">
+			<value>0 * * * * ?</value>
+		</property>
+	</bean>
+	
+	<bean id="schedulerFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="tcwtjTrigger"/>
+				<ref bean="sendSMSTrigger"/>
+				<ref bean="awardlevelTrigger"/>
+				<ref bean="sendPrizeTrigger"/>
+			</list>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	
+	
+<!-- 
+	<bean id="springDSN" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>${mysqlurl}</value>
+		</property>
+		<property name="username">
+			<value>${mysqlusername}</value>
+		</property>
+		<property name="password">
+			<value>${mysqlpassword}</value>
+		</property>
+	</bean>
+	<bean id="client" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>${mysqlurlclient}</value>
+		</property>
+		<property name="username">
+			<value>${mysqlusername}</value>
+		</property>
+		<property name="password">
+			<value>${mysqlpassword}</value>
+		</property>
+	</bean> 
+    <bean id="chargecenter" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>${mysqlurlchargecenter}</value>
+		</property>
+		<property name="username">
+			<value>${mysqlusername}</value>
+		</property>
+		<property name="password">
+			<value>${mysqlpassword}</value>
+		</property>
+	</bean>
+    <bean id="prizecrawler" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>${mysqlurlprizecrawler}</value>
+		</property>
+		<property name="username">
+			<value>${mysqlusername}</value>
+		</property>
+		<property name="password">
+			<value>${mysqlpassword}</value>
+		</property>
+	</bean>
+	-->
+	
+	<bean id="jdbcTemplateNews" class="org.springframework.jdbc.core.JdbcTemplate" abstract="false"
+        lazy-init="false" autowire="default" dependency-check="default">
+        <property name="dataSource">
+            <ref bean="newsDataSource" />
+        </property>
+    </bean>
+
+	<bean id="jdbcTemplateClient" class="org.springframework.jdbc.core.JdbcTemplate" abstract="false"
+        lazy-init="false" autowire="default" dependency-check="default">
+        <property name="dataSource">
+            <ref bean="clientDataSource" />
+        </property>
+    </bean>
+    <bean id="newsDao" class="com.ruyicai.mgr.mysql.NewsDao"> 
+        <property name="jdbcTemplate"> 
+           <ref local="jdbcTemplateNews" /> 
+        </property> 
+    </bean> 
+    <bean id="issusDao" class="com.ruyicai.mgr.mysql.IssusDao"> 
+        <property name="jdbcTemplate"> 
+           <ref local="jdbcTemplateNews" /> 
+        </property> 
+    </bean> 
+    
+    <bean id="clientDao" class="com.ruyicai.mgr.mysql.ClientDao"> 
+        <property name="jdbcTemplate"> 
+           <ref local="jdbcTemplateClient" /> 
+        </property> 
+    </bean> 
+	
+	<bean id="jdbcTemplateChargecenter" class="org.springframework.jdbc.core.JdbcTemplate" abstract="false"
+        lazy-init="false" autowire="default" dependency-check="default">
+        <property name="dataSource">
+            <ref bean="chargecenterDataSource" />
+        </property>
+    </bean>
+    <bean id="chargecenterDao" class="com.ruyicai.mgr.mysql.ChargecenterDao"> 
+        <property name="jdbcTemplate"> 
+           <ref local="jdbcTemplateChargecenter" /> 
+        </property> 
+    </bean> 
+    
+    
+	
+	<bean id="jdbcTemplatePrizecrawler" class="org.springframework.jdbc.core.JdbcTemplate" abstract="false"
+        lazy-init="false" autowire="default" dependency-check="default">
+        <property name="dataSource">
+            <ref bean="prizecrawlerDataSource" />
+        </property>
+    </bean>
+    
+     <bean id="prizecrawlerDao" class="com.ruyicai.mgr.mysql.PrizecrawlerDao"> 
+        <property name="jdbcTemplate"> 
+           <ref local="jdbcTemplatePrizecrawler" /> 
+        </property> 
+    </bean> 
+</beans>

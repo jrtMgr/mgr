@@ -1,0 +1,147 @@
+create table TMENUNEW
+(
+       id NUMBER(10) not null,
+       inid NUMBER(5),
+       name varchar2(50 char),
+       url varchar2(255 char)
+)
+alter table TMENUNEW
+			  add constraint PK_TMENUNEW primary key (ID);
+create table TPERMISSION
+(
+       id NUMBER(10) not null,
+       menuinid NUMBER(5),
+       userid varchar2(16 char)
+);
+alter table TPERMISSION
+        add constraint PK_TPERMISSION primary key (ID);			  
+alter table TPERMISSION add (state NUMBER(5));
+create table TCWTJ
+(
+       id NUMBER(10) not null,
+       tjdate TIMESTAMP(6),
+       usercharge NUMBER(10),
+       channelcharge NUMBER(10),
+       encash NUMBER(10),
+       activitypersent NUMBER(10),
+       chargepersent NUMBER(10),
+       inhj NUMBER(10),
+       userbet NUMBER(10),
+       channelbet NUMBER(10),
+       draw NUMBER(10),
+       fee NUMBER(10),
+       other1 NUMBER(10),
+       outhj NUMBER(10),
+       balance NUMBER(10),
+       memo varchar2(150 char)
+);
+alter table TCWTJ
+			  add constraint PK_TCWTJ primary key (ID);
+alter table TCWTJ add (cannel NUMBER(10));
+
+insert into tmenunew values (hibernate_sequence.nextval, 1, '权限设置', '/tpermissions');
+insert into tmenunew values (hibernate_sequence.nextval, 2, '用户信息', '/tuserinfoes');
+insert into tmenunew values (hibernate_sequence.nextval, 3, '彩票信息', '/tlots');
+insert into tmenunew values (hibernate_sequence.nextval, 4, '期信息', '/tlotctrls');
+insert into tmenunew values (hibernate_sequence.nextval, 5, '充值信息', '/tcharges');
+insert into tmenunew values (hibernate_sequence.nextval, 6, '赠送彩金', '/tpresents');
+insert into tmenunew values (hibernate_sequence.nextval, 7, '发送短信', '/tsendsms');
+insert into tmenunew values (hibernate_sequence.nextval, 8, '实时监控', '/tmonitors');
+insert into tmenunew values (hibernate_sequence.nextval, 9, '刷新统计', '/updateStatistic');
+insert into tmenunew values (hibernate_sequence.nextval, 10, '如意卡充值', '/recharge');
+insert into tmenunew values (hibernate_sequence.nextval, 11, '彩票中心', '/lotCenter');
+insert into tmenunew values (hibernate_sequence.nextval, 12, '如意卡管理', '/tcard');
+insert into tmenunew values (hibernate_sequence.nextval, 15, '合买置顶管理', '/caselot');
+insert into tmenunew values (hibernate_sequence.nextval, 16, '合买名人管理', '/caselot');
+insert into tmenunew values (hibernate_sequence.nextval, 17, '账务统计', '/tcwtj');
+insert into tmenunew values (hibernate_sequence.nextval, 18, '修改监控系统时间', '/lssm');
+insert into tmenunew values (hibernate_sequence.nextval, 19, '采种加奖', '/tawardlevel');
+insert into tmenunew values (hibernate_sequence.nextval, 21, '活动管理', '/tactivities');
+insert into tmenunew values (hibernate_sequence.nextval, 20, '采种加奖审核', '/tawardlevelAudit');
+insert into tmenunew values (hibernate_sequence.nextval, 23, '提现财务处理', '/cashCW');
+insert into tmenunew values (hibernate_sequence.nextval, 24, '彩种管理', '/tlottypes');
+insert into tmenunew values (hibernate_sequence.nextval, 25, '合作商管理', '/biguser');
+insert into tmenunew values (hibernate_sequence.nextval, 26, '充值财务审核', '/biguserCW');
+insert into tmenunew values (hibernate_sequence.nextval, 27, '渠道管理', '/channel');
+insert into tmenunew values (hibernate_sequence.nextval, 28, '预开期管理', '/preissue');
+insert into tmenunew values (hibernate_sequence.nextval, 29, 'dna管理', '/tdnabind');
+insert into tmenunew values (hibernate_sequence.nextval, 30, '资讯管理', '/news');
+insert into tmenunew values (hibernate_sequence.nextval, 31, '资讯审核', '/newsappro');
+insert into tmenunew values (hibernate_sequence.nextval, 32, '短信监控管理', '/msgmonitor');
+insert into tmenunew values (hibernate_sequence.nextval, 33, '订单信息', '/torders');
+insert into tmenunew values (hibernate_sequence.nextval, 34, '互联网数据统计', '/webstatistic');
+insert into tmenunew values (hibernate_sequence.nextval, 35, '统计用户管理', '/suser');
+insert into tmenunew values (hibernate_sequence.nextval, 36, '批量赠送管理', '/batchgift');
+insert into tmenunew values (hibernate_sequence.nextval, 37, '批量赠送审核', '/batchgiftAudit');
+insert into tmenunew values (hibernate_sequence.nextval, 38, '足彩对阵', '/events');
+insert into tmenunew values (hibernate_sequence.nextval, 39, '出票中心管理', '/tlotstrategy');
+insert into tmenunew values (hibernate_sequence.nextval, 40, '业务管理', '/yw');
+insert into tmenunew values (hibernate_sequence.nextval, 41, '服务器管理', '/servermanager');
+insert into tmenunew values (hibernate_sequence.nextval, 42, '客户端渠道管理', '/client');
+insert into tmenunew values (hibernate_sequence.nextval, 43, '客户端日统计', '/clientdaily');
+insert into tmenunew values (hibernate_sequence.nextval, 44, '客户留言', '/cmsg');
+insert into tmenunew values (hibernate_sequence.nextval, 45, '自有彩种管理', '/tlottypeconfig');
+insert into tmenunew values (hibernate_sequence.nextval, 46, '渠道开奖时间', '/opentime');
+insert into tmenunew values (hibernate_sequence.nextval, 47, '开奖渠道管理', '/channelweights');
+insert into tmenunew values (hibernate_sequence.nextval, 48, '积分管理', '/scoretype');
+insert into tmenunew values (hibernate_sequence.nextval, 49, '用户积分查询', '/scoredetail');
+insert into tmenunew values (hibernate_sequence.nextval, 50, '彩票中心对账', '/tlotcenterDuizhang');
+insert into tmenunew values (hibernate_sequence.nextval, 51, '代理用户', '/agent');
+insert into tmenunew values (hibernate_sequence.nextval, 52, '客服开奖', '/ladyopen');
+insert into tmenunew values (hibernate_sequence.nextval, 53, '运维开奖', '/gentlemanopen');
+insert into tmenunew values (hibernate_sequence.nextval, 54, '用户登录信息', '/userloginfo');
+insert into tmenunew values (hibernate_sequence.nextval, 55, '合买管理', '/caselot');
+insert into tmenunew values (hibernate_sequence.nextval, 56, '数据统计', '/datastat');
+insert into tmenunew values (hibernate_sequence.nextval, 57, '追号管理', '/addnumber');
+insert into tmenunew values (hibernate_sequence.nextval, 58, '竞彩赛事', '/tjingcaiMatches');
+insert into tmenunew values (hibernate_sequence.nextval, 59, '竞彩赛果', '/tjingcairesult');
+insert into tmenunew values (hibernate_sequence.nextval, 60, '投注机', '/betmachine');
+insert into tmenunew values (hibernate_sequence.nextval, 61, '竞彩监控', '/jcmonitor');
+insert into tmenunew values (hibernate_sequence.nextval, 62, '赠送中心管理', '/present');
+insert into tmenunew values (hibernate_sequence.nextval, 63, '转账', '/autoTransfer');
+insert into tmenunew values (hibernate_sequence.nextval, 64, '竞彩冠亚军赛事', '/tjingcaigyjmatch');
+insert into tmenunew values (hibernate_sequence.nextval, 65, '大客户查询', '/biguserquery');
+insert into tmenunew values (hibernate_sequence.nextval, 66, '查询留言回复', '/replys');
+insert into tmenunew values (hibernate_sequence.nextval, 67, 'wap数据统计', '/wapstat');
+insert into tmenunew values (hibernate_sequence.nextval, 68, '赠送彩金红包', '/sendmoney');
+insert into tmenunew values (hibernate_sequence.nextval, 69, '增加ios推送', '/delayIOS');
+insert into tmenunew values (hibernate_sequence.nextval, 70, '代充值管理', '/ttransfer');
+insert into tmenunew values (hibernate_sequence.nextval, 71, '站内消息管理', '/letter');
+insert into tmenunew values (hibernate_sequence.nextval, 72, '用户合并', '/tcombine');
+insert into tmenunew values (hibernate_sequence.nextval, 73, '出票监控', '/tdrawerMonitor');
+insert into tmenunew values (hibernate_sequence.nextval, 74, '充值权重分配', '/tchargeDistribution');
+insert into tmenunew values (hibernate_sequence.nextval, 75, '查看处理中票', '/processing');
+insert into tmenunew values (hibernate_sequence.nextval, 76, '删除留言', '/dmsg');
+insert into tmenunew values (hibernate_sequence.nextval, 77, '湖南福彩分配', '/tlotstrategy');
+insert into tmenunew values (hibernate_sequence.nextval, 78, '大客户余额监控', '/agencybalance');
+insert into tmenunew values (hibernate_sequence.nextval, 79, '定时任务管理', '/quartz');
+insert into tmenunew values (hibernate_sequence.nextval, 80, '充值信息配置', '/chargeconfig');
+insert into tmenunew values (hibernate_sequence.nextval, 81, '修改用户渠道', '/userchannel');
+insert into tmenunew values (hibernate_sequence.nextval, 83, '消息中心', '/msgcenter');
+
+insert into tmenunew values (hibernate_sequence.nextval, 1001, 'C渠道统计', '/coopstat');
+insert into tmenunew values (hibernate_sequence.nextval, 1002, 'C实时统计', '/realtimestat');
+insert into tmenunew values (hibernate_sequence.nextval, 1003, 'C历史统计', '/historystat');
+insert into tmenunew values (hibernate_sequence.nextval, 1004, 'C版本统计', '/versionstat');
+insert into tmenunew values (hibernate_sequence.nextval, 1005, 'C平台统计', '/platformstat');
+insert into tmenunew values (hibernate_sequence.nextval, 1006, 'C互联星空统计', '/hlxkstat');
+insert into tmenunew values (hibernate_sequence.nextval, 1007, 'C业务量统计', '/businessvolumestat');
+insert into tmenunew values (hibernate_sequence.nextval, 1008, 'C新闻资讯', '/news');
+insert into tmenunew values (hibernate_sequence.nextval, 1009, 'C消息列表', '/message');
+insert into tmenunew values (hibernate_sequence.nextval, 1010, 'C活动中心', '/activity');
+insert into tmenunew values (hibernate_sequence.nextval, 1011, 'C专家荐号', '/expertCode');
+insert into tmenunew values (hibernate_sequence.nextval, 1012, 'C彩种统计', '/lottypestat');
+insert into tmenunew values (hibernate_sequence.nextval, 1013, 'C充值统计', '/chargestat');
+insert into tmenunew values (hibernate_sequence.nextval, 1014, 'C充值配置', '/chargeconfig');
+insert into tmenunew values (hibernate_sequence.nextval, 1015, 'C升级配置', '/upgradeconfig');
+insert into tmenunew values (hibernate_sequence.nextval, 1016, 'C注册未充值', '/registernotchargestat');
+insert into tmenunew values (hibernate_sequence.nextval, 1017, 'C图片配置', '/imageconfig');
+insert into tmenunew values (hibernate_sequence.nextval, 1018, 'C广播消息', '/broadcast');
+insert into tmenunew values (hibernate_sequence.nextval, 1019, 'C帮助中心', '/helpcenter');
+insert into tmenunew values (hibernate_sequence.nextval, 1020, 'C用户信息', '/userinf');
+insert into tmenunew values (hibernate_sequence.nextval, 1021, 'C版本信息', '/versioninfo');
+insert into tmenunew values (hibernate_sequence.nextval, 1022, 'C异常信息', '/exceptionmessage');
+insert into tmenunew values (hibernate_sequence.nextval, 1023, 'C彩种信息', '/lottypeinfo');
+insert into tmenunew values (hibernate_sequence.nextval, 1024, 'C赠送短信', '/giftmessage');
+insert into tmenunew values (hibernate_sequence.nextval, 1025, 'C微博分享', '/weibosharestat');
+insert into tmenunew values (hibernate_sequence.nextval, 1026, 'C灰度升级', '/grayupgrade');
